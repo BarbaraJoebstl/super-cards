@@ -5,6 +5,7 @@ import { getDecks } from '../utils/helper';
 import { receiveAllDecks } from '../store/actions/index';
 import TextButton from '../components/TextButton';
 import DeckListItem from '../components/DeckListItem';
+import {styles} from '../constants/Style';
 
 
 class DeckListScreen extends React.Component {
@@ -22,9 +23,13 @@ class DeckListScreen extends React.Component {
         const decks = this.props.decks
 
         return (
-            <View>
+            <View style={styles.container}>
                 <TextButton
-                    onPress={() => navigate('NewDeck')}>Create New Deck</TextButton>
+                    onPress={() => navigate('NewDeck')}
+                    style={styles.primaryButton}
+                >
+                Create New Deck
+                </TextButton>
                 {decks && Object.keys(decks).length ? (
                     <ScrollView>
                         {Object.keys(decks).map((key) => {
@@ -40,7 +45,7 @@ class DeckListScreen extends React.Component {
                     </ScrollView>
                 ) : (
                         <View>
-                            <Text>There are no decks yet</Text>
+                            <Text style={styles.bigText}>There are no decks yet</Text>
                         </View>
                     )}
             </View>

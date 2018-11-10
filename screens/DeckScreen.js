@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import TextButton from '../components/TextButton';
+import {styles} from '../constants/Style';
 
 class DeckScreen extends React.Component {
     
@@ -16,16 +17,18 @@ class DeckScreen extends React.Component {
     const {id, deck} = this.props
     const navigate = this.props.navigation.navigate
     return (
-      <View>
-          
-
+      <View style={styles.content}>
            {deck ? (
-            <Text>Number of Questions: {deck.questions.length} </Text>
+            <Text style={styles.bigText}>Number of Questions: {deck.questions.length} </Text>
            ) :(
-            <Text>There are no questions for {deck.title} </Text>
+            <Text style={styles.smallText}>There are no questions for {deck.title} </Text>
            )}
-          <TextButton onPress={() => navigate('NewQuestion', {deckId: id})}>Add new Question</TextButton>
-          <TextButton onPress={()=> navigate('Quiz', {deckId: id, title: deck.title})}>Start Quiz</TextButton>
+          <TextButton 
+          style={styles.primaryButton}
+          onPress={()=> navigate('Quiz', {deckId: id, title: deck.title})}>Start Quiz</TextButton>
+          <TextButton 
+          style={styles.secondaryButton}
+          onPress={() => navigate('NewQuestion', {deckId: id})}>Add new Question</TextButton>
       </View>
     )
   }

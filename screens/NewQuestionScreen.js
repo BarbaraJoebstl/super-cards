@@ -1,8 +1,11 @@
-import React from 'react';
-import { View, Text, KeyboardAvoidingView, TouchableOpacity, TextInput } from 'react-native';
-import { saveNewQuestion } from '../utils/helper';
-import { addNewQuestion } from '../store/actions/index';
-import { connect } from 'react-redux';
+import React from 'react'
+import { View, KeyboardAvoidingView, TextInput } from 'react-native'
+import { saveNewQuestion } from '../utils/helper'
+import { addNewQuestion } from '../store/actions/index'
+import { connect } from 'react-redux'
+import TextButton from '../components/TextButton'
+import {styles} from '../constants/Style'
+
 
 class NewQuestionScreen extends React.Component {
 
@@ -36,21 +39,24 @@ class NewQuestionScreen extends React.Component {
     render() {
         return (
             <KeyboardAvoidingView behavior="padding">
-                <View >
+                <View style={styles.content}>
                     <TextInput
+                        style={styles.input}
                         onChangeText={(question) => this.setState({ question })}
                         value={this.state.text}
                         placeholder='question'
                     />
                     <TextInput
+                        style={styles.input}
                         onChangeText={(answer) => this.setState({ answer })}
                         value={this.state.text}
                         placeholder='answer'
                     />
-                    <TouchableOpacity
-                        onPress={() => this.handleSubmit()}>
-                        <Text>Add</Text>
-                    </TouchableOpacity>
+                    <TextButton 
+                    style={styles.primaryButton}
+                    onPress={() => this.handleSubmit()}>
+                        Add new Question
+                    </TextButton>
                 </View>
             </KeyboardAvoidingView>
         )

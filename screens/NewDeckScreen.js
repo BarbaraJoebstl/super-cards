@@ -5,6 +5,7 @@ import { saveNewDeck } from '../utils/helper';
 import { addNewDeck } from '../store/actions/index';
 import { connect } from 'react-redux';
 import TextButton from '../components/TextButton';
+import {styles} from '../constants/Style';
 
 class NewDeckScreen extends React.Component {
 
@@ -47,6 +48,7 @@ class NewDeckScreen extends React.Component {
                         placeholder='name your new deck'
                     />
                     <TextButton
+                        style={styles.primaryButton}
                         onPress={() => this.handleSubmit()}>Add to my decks</TextButton>
                 </View>
             </KeyboardAvoidingView>
@@ -63,10 +65,3 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default connect(null, mapDispatchToProps)(NewDeckScreen);
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-});

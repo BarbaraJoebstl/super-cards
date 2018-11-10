@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableHighlight } from 'react-native'
+import {styles} from '../constants/Style';
 
 class DeckListItem extends Component {
 
@@ -7,10 +8,11 @@ class DeckListItem extends Component {
         const { id, deck, navigation } = this.props
 
         return (
-                <TouchableHighlight onPress={() => navigation.navigate('Deck', { deck: deck, id: id })}>  
-                    <View>
-                        <Text>{deck.title}</Text>
-                        <Text>{deck.questions.length} cards</Text>
+                <TouchableHighlight 
+                onPress={() => navigation.navigate('Deck', { deck: deck, id: id })}>  
+                    <View style={styles.card}>
+                        <Text style={styles.bigText}>{deck.title}</Text>
+                        <Text style={styles.bigText}>{deck.questions.length} cards</Text>
                     </View>      
                 </TouchableHighlight>
         )
