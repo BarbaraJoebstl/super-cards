@@ -46,7 +46,6 @@ const defaultDecks = {
   }
   
 
-
 export function getDecks() {
   return AsyncStorage.getItem(CARDS_STORAGE_KEY)
     .then((results) => {

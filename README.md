@@ -1,6 +1,6 @@
 # SUPER CARDS
 
-React Native App made for the Udacity React ND.
+React Native App with Redux made for the Udacity React ND.
 The App is scaffolded with [this](https://github.com/react-community/create-react-native-app).
 
 It is an app that provides learning cards for different topics. Each topic holds questions and answers. You can toggle the cards to see the answer or the question.
@@ -18,3 +18,6 @@ you can also install [expo](https://expo.io/) on your mobile.
 - Flip a question card to show the answer
 - Calc percentage of correct answers
 - Custom styling
+
+## Tested 
+- on Android
