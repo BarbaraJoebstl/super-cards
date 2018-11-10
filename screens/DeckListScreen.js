@@ -6,6 +6,7 @@ import { receiveAllDecks } from '../store/actions/index';
 import TextButton from '../components/TextButton';
 import DeckListItem from '../components/DeckListItem';
 
+
 class DeckListScreen extends React.Component {
     static navigationOptions = {
         title: 'All Decks',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View,ScrollView, StyleSheet, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import TextButton from '../components/TextButton';
 
@@ -17,7 +17,13 @@ class DeckScreen extends React.Component {
     const navigate = this.props.navigation.navigate
     return (
       <View>
-          <Text>Number of Questions: {deck.questions.length} </Text>
+          
+
+           {deck ? (
+            <Text>Number of Questions: {deck.questions.length} </Text>
+           ) :(
+            <Text>There are no questions for {deck.title} </Text>
+           )}
           <TextButton onPress={() => navigate('NewQuestion', {deckId: id})}>Add new Question</TextButton>
           <TextButton onPress={()=> navigate('Quiz', {deckId: id, title: deck.title})}>Start Quiz</TextButton>
       </View>

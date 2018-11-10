@@ -16,16 +16,21 @@ class NewQuestionScreen extends React.Component {
 
     handleSubmit() {
         let key = this.props.deckId
+        console.log(key)
         let question = this.state.question
         let answer = this.state.answer
         let questions = [{ question, answer }]
 
+        let entry_for_store = {
+            deckId: this.props.deckId,
+            deckTitle: this.props.deck.title,
+            questions: [{ question, answer }] 
+        }
         saveNewQuestion({key, questions})
-
-        this.props.addNewQuestion(key, questions)
+        this.props.addNewQuestion(entry_for_store)
 
         this.setState(() => ({ question: '', answer: '' }))
-        this.props.navigation.goBack()
+        this.props.navigation.navigate('Deck', { deck: this.props.deck, id: key })
     }
 
     render() {
@@ -61,7 +66,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addNewQuestion: (key, questions) => dispatch(addNewQuestion({title: key, questions })),
+        addNewQuestion: (entry) => dispatch(addNewQuestion(entry)),
     }
 }
 

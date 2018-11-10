@@ -7,12 +7,11 @@ class DeckListItem extends Component {
         const { id, deck, navigation } = this.props
 
         return (
-            
-                <TouchableHighlight onPress={() => navigation.navigate('Deck', { deck: deck, id: id })}>
+                <TouchableHighlight onPress={() => navigation.navigate('Deck', { deck: deck, id: id })}>  
                     <View>
                         <Text>{deck.title}</Text>
                         <Text>{deck.questions.length} cards</Text>
-                    </View>
+                    </View>      
                 </TouchableHighlight>
         )
     }

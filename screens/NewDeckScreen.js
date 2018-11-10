@@ -17,33 +17,39 @@ class NewDeckScreen extends React.Component {
     state = { title: '' }
 
     handleSubmit() {
-        const key = uuidv1()
-        const newDeck = {
+        let key = uuidv1()
+        let newDeck = {
             title: this.state.title,
             questions: []
         }
 
-        this.props.addNewDeck(key, newDeck)
+        let entry_for_store = {
+            id: key,
+            title: this.state.title,
+            questions: []
+        }
+        
+        this.props.addNewDeck(entry_for_store)
         saveNewDeck(key, newDeck)
-        this.setState({title:''})
-        this.props.navigation.navigate('Deck', {deck: newDeck})
+        this.setState({ title: '' })
+        this.props.navigation.navigate('Deck', { deck: newDeck, id: key })
     }
 
 
     render() {
         return (
             <KeyboardAvoidingView style={styles.container} behavior="padding">
-            <View style={styles.content}>
-              <TextInput
-                style={styles.input}
-                onChangeText={(title) => this.setState({ title })}
-                value={this.state.text}
-                placeholder='name your new deck'
-              />
-              <TextButton
-                onPress={() => this.handleSubmit()}>Add to my decks</TextButton>
-            </View>
-          </KeyboardAvoidingView>
+                <View style={styles.content}>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={(title) => this.setState({ title })}
+                        value={this.state.text}
+                        placeholder='name your new deck'
+                    />
+                    <TextButton
+                        onPress={() => this.handleSubmit()}>Add to my decks</TextButton>
+                </View>
+            </KeyboardAvoidingView>
         )
     }
 }
@@ -51,10 +57,10 @@ class NewDeckScreen extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      addNewDeck: (key, entry) => dispatch(addNewDeck({key: entry})),
+        addNewDeck: (entry_for_store) => dispatch(addNewDeck(entry_for_store)),
     }
-  }
- 
+}
+
 
 export default connect(null, mapDispatchToProps)(NewDeckScreen);
 

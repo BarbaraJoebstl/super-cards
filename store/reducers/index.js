@@ -11,16 +11,19 @@ function decks(state = {}, action) {
         case ADD_NEW_DECK:
             return {
                 ...state,
-                ...action.deck
+                [action.deck.id]: {
+                    title: action.deck.title,
+                    questions: action.deck.questions
+                }
             }
         case ADD_NEW_QUESTION: {
             return {
                 ...state,
-                [action.deck.title]: {
-                    title: action.deck.title,
+                [action.question.deckId]: {
+                    title: action.question.deckTitle,
                     questions: [
-                        ...state[action.deck.title].questions,
-                        { ...action.questions }
+                        ...state[action.question.deckId].questions,
+                        { ...action.question.questions }
                     ]
                 }
             }
