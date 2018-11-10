@@ -17,7 +17,8 @@ class DeckListScreen extends React.Component {
     }
 
     render() {
-        decks = this.props.decks
+        const navigate = this.props.navigation.navigate
+        const decks = this.props.decks
 
         return (
             <View>
